@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:mad/screen/product_detail_screen.dart';
+import 'package:mad/util/route_manager.dart';
 
 class ProductScreen extends StatefulWidget {
 
@@ -11,14 +13,18 @@ class ProductScreen extends StatefulWidget {
 class _State extends State<ProductScreen> {
 
    Future<List<String>> _loadProductList() async {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 2));
     // throw("Internal Server Error");
-    return List.generate(10 , (i) => "Product $i").toList();
+    return List.generate(10 , (i) => "CocaCola $i").toList();
    }
 
   @override
   Widget build(BuildContext context) {
       return Scaffold(
+        appBar: AppBar(
+          elevation: 0.5,
+          title: Text("Product List"),
+        ),
         body: FutureBuilder(
           future: _loadProductList(), 
           builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot){
@@ -51,11 +57,19 @@ class _State extends State<ProductScreen> {
 
                   String product = productList[index];
 
-                    return ListTile(
-                      leading: Icon(Icons.favorite),
-                      title: Text("$product"),
-                      subtitle: Text("1\$"),
-                      trailing: Icon(Icons.add),
+                    return GestureDetector(
+                      child: ListTile(
+                        leading: Icon(Icons.favorite),
+                        title: Text("$product"),
+                        subtitle: Text("1\$"),
+                        trailing: Icon(Icons.add),
+                      ),
+                      onTap: (){
+                        // RouteManager.key.currentState?.pushNamed(RouteManager.productDetailScreen,
+                        // arguments: product);
+                        final route = MaterialPageRoute(builder: (BuildContext content) => ProductDetailScreen(product: product,));
+                        RouteManager.key.currentState?.push(route);
+                      },
                     );
               });
 
