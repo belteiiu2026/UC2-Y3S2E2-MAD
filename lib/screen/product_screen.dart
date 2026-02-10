@@ -7,7 +7,6 @@ class ProductScreen extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _State();
-  
 }
 
 class _State extends State<ProductScreen> {
@@ -26,7 +25,7 @@ class _State extends State<ProductScreen> {
           title: Text("Product List"),
         ),
         body: FutureBuilder(
-          future: _loadProductList(), 
+          future: _loadProductList(),
           builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot){
 
               // ConnectionState

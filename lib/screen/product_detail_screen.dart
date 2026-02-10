@@ -21,9 +21,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         elevation: 0.5,
         title: Text("${widget.product}"),
       ),
-      body: Center(
-        child: Text("Product Detail"),
-      ),
+      body: Text("Product Detail"),
     );
   }
 }

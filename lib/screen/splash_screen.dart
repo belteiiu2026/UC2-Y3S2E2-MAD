@@ -11,17 +11,7 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: ElevatedButton(onPressed: (){
-          // Option 1
-          //final route = MaterialPageRoute(builder: (BuildContext context) => ProductScreen());
-          //Navigator.push(context, route);
-
-          // Option 2
-          // Navigator.pushNamed(context, RouteManager.productScreen);
-
-
-          // Final RouteManager
-          RouteManager.key.currentState?.pushReplacementNamed(RouteManager.productScreen);
-
+          RouteManager.key.currentState?.pushReplacementNamed(RouteManager.mainScreen);
         }, child: Text("Get Started")),
       ),
     );
